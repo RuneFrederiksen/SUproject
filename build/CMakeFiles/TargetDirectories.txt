@@ -1,0 +1,3 @@
+/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles/SUgame.dir
+/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles/edit_cache.dir
+/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles/rebuild_cache.dir

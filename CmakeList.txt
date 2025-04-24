@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.10)
+project(TerminalRPG)
+
+# Require C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Include directories
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+# Source files
+set(SOURCES
+    main.cpp
+    Hero.cpp
+    Enemy.cpp
+    GameEngine.cpp
+)
+
+# Build executable
+add_executable(TerminalRPG ${SOURCES})
+
+# If you want to set output directory
+set_target_properties(TerminalRPG PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+)

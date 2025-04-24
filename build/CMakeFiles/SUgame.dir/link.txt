@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/SUgame.dir/main.cpp.o CMakeFiles/SUgame.dir/Hero.cpp.o CMakeFiles/SUgame.dir/Enemy.cpp.o CMakeFiles/SUgame.dir/Gameengine.cpp.o -o "/home/rune/Documents/2. semester/softwareudvikling/SUproject/bin/SUgame" 
