@@ -191,14 +191,14 @@ void GameEngine::enterRoom() {
 void GameEngine::battle(Enemy& enemy) {
     std::uniform_int_distribution<int> dice(1, 6);
     int heroRoll  = dice(rng_);
+    int enemyRoll = dice(rng_);
+    bool heroGoesFirst = (heroRoll >= enemyRoll);
+
     std::cout << hero_->getName() << " kaster terning: " << heroRoll << "\n";
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    int enemyRoll = dice(rng_);
-    std::cout << enemy.getName() << " kaster terning: " << enemyRoll << "\n";
+    std::cout << enemy.getName()   << " kaster terning: " << enemyRoll << "\n";
     std::this_thread::sleep_for(std::chrono::seconds(1));
-
-    bool heroTurn = (heroRoll >= enemyRoll);
-    std::cout << (heroTurn ? hero_->getName() : enemy.getName())
+    std::cout << (heroGoesFirst ? hero_->getName() : enemy.getName())
               << " starter!\n";
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
@@ -206,32 +206,37 @@ void GameEngine::battle(Enemy& enemy) {
     int round = 1;
     while (hero_->getHp() > 0 && localHp > 0) {
         std::cout << "\n--- Runde " << round << " ---\n";
-        if (heroTurn) {
+        if (heroGoesFirst) {
             int dmg = hero_->attack();
             localHp -= dmg;
-            std::cout << hero_->getName() << " angriber og forårsager " << dmg
-                      << " skade. " << enemy.getName() << " har nu " << localHp << " HP.\n";
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
-            if (localHp <= 0) break;
-
-            dmg = enemy.attack();
-            hero_->takeDamage(dmg);
-            std::cout << enemy.getName() << " angriber tilbage og forårsager " << dmg
-                      << " skade. " << hero_->getName() << " har nu " << hero_->getHp() << " HP.\n";
+            std::cout << hero_->getName()
+                      << " angriber først og forårsager " << dmg
+                      << " skade. " << enemy.getName()
+                      << " har nu " << localHp << " HP.\n";
+            if (localHp > 0) {
+                dmg = enemy.attack();
+                hero_->takeDamage(dmg);
+                std::cout << enemy.getName()
+                          << " angriber og forårsager " << dmg
+                          << " skade. " << hero_->getName()
+                          << " har nu " << hero_->getHp() << " HP.\n";
+            }
         } else {
             int dmg = enemy.attack();
             hero_->takeDamage(dmg);
-            std::cout << enemy.getName() << " angriber og forårsager " << dmg
-                      << " skade. " << hero_->getName() << " har nu " << hero_->getHp() << " HP.\n";
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
-            if (hero_->getHp() <= 0) break;
-
-            dmg = hero_->attack();
-            localHp -= dmg;
-            std::cout << hero_->getName() << " angriber tilbage og forårsager " << dmg
-                      << " skade. " << enemy.getName() << " har nu " << localHp << " HP.\n";
+            std::cout << enemy.getName()
+                      << " angriber først og forårsager " << dmg
+                      << " skade. " << hero_->getName()
+                      << " har nu " << hero_->getHp() << " HP.\n";
+            if (hero_->getHp() > 0) {
+                dmg = hero_->attack();
+                localHp -= dmg;
+                std::cout << hero_->getName()
+                          << " angriber og forårsager " << dmg
+                          << " skade. " << enemy.getName()
+                          << " har nu " << localHp << " HP.\n";
+            }
         }
-        heroTurn = !heroTurn;
         round++;
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
@@ -242,6 +247,7 @@ void GameEngine::battle(Enemy& enemy) {
         std::cout << "\nDu døde i kampen mod " << enemy.getName() << "...\n";
     std::this_thread::sleep_for(std::chrono::seconds(2));
 }
+
 
 void GameEngine::manualLevelUp() {
     if (!hero_ || !hero_->canLevelUp()) {
