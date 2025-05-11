@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SUgame.dir/Gameengine.cpp.o.d"
   "CMakeFiles/SUgame.dir/Hero.cpp.o"
   "CMakeFiles/SUgame.dir/Hero.cpp.o.d"
+  "CMakeFiles/SUgame.dir/grotte.cpp.o"
+  "CMakeFiles/SUgame.dir/grotte.cpp.o.d"
   "CMakeFiles/SUgame.dir/main.cpp.o"
   "CMakeFiles/SUgame.dir/main.cpp.o.d"
 )

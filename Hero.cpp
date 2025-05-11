@@ -1,9 +1,15 @@
 #include "Hero.h"
 #include <iostream>
-#include <limits>
 
 Hero::Hero(const std::string& name)
-    : name_(name), xp_(0), level_(1), hp_(10), maxhp_(10), strength_(2), statPoints_(0)
+    : name_(name)
+    , xp_(0)
+    , level_(1)
+    , hp_(25)
+    , maxhp_(25)
+    , strength_(4)
+    , statPoints_(0)
+    , gold_(0)               
 {}
 
 Hero::Hero(const std::string& name,
@@ -20,6 +26,7 @@ Hero::Hero(const std::string& name,
     , maxhp_(maxhp)
     , strength_(strength)
     , statPoints_(statPoints)
+    , gold_(0)               
 {}
 
 const std::string& Hero::getName() const { return name_; }
@@ -29,6 +36,13 @@ int Hero::getHp() const            { return hp_; }
 int Hero::getMaxHp() const         { return maxhp_; }
 int Hero::getStrength() const      { return strength_; }
 int Hero::getStatPoints() const    { return statPoints_; }
+
+int Hero::getGold() const          { return gold_; } 
+
+void Hero::addGold(int amount) {                  
+    gold_ += amount;
+    std::cout << name_ << " har nu " << gold_ << " guld.\n";
+}
 
 int Hero::attack() const { return strength_; }
 
@@ -58,7 +72,7 @@ bool Hero::levelUp() {
     if (!canLevelUp()) return false;
     xp_ -= xpThreshold();
     level_++;
-    statPoints_ += 3;
+    statPoints_ += 5;
     return true;
 }
 
@@ -77,6 +91,8 @@ bool Hero::allocateStats(int hpPoints, int strengthPoints) {
 
 void Hero::restoreHp() {
     hp_ = maxhp_;
+    xp_ -= 100;
+
 }
 
 void Hero::setMaxHp(int maxhp) {

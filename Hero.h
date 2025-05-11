@@ -6,7 +6,13 @@
 class Hero {
 public:
     Hero(const std::string& name);
-    Hero(const std::string& name, int xp, int level, int hp, int maxhp, int strength, int statPoints);
+    Hero(const std::string& name,
+         int xp,
+         int level,
+         int hp,
+         int maxhp,
+         int strength,
+         int statPoints);
 
     const std::string& getName() const;
     int getXp() const;
@@ -15,6 +21,9 @@ public:
     int getMaxHp() const;
     int getStrength() const;
     int getStatPoints() const;
+
+    int getGold() const;           
+    void addGold(int amount);     
 
     int attack() const;
     void takeDamage(int amount);
@@ -34,6 +43,7 @@ private:
     int maxhp_;
     int strength_;
     int statPoints_;
+    int gold_;                   
 };
 
 #endif

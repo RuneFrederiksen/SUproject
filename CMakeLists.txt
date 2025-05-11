@@ -11,7 +11,9 @@ set(SOURCES
     Hero.cpp
     Enemy.cpp
     Gameengine.cpp
+    grotte.cpp
 )
+
 
 add_executable(SUgame ${SOURCES})
 
