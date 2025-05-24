@@ -1,7 +1,9 @@
-
+// Hero.cpp
 #include "Hero.h"
 #include <iostream>
 #include <limits>
+
+// —— Constructors —— 
 
 Hero::Hero(const std::string& name)
     : name_(name)
@@ -9,7 +11,7 @@ Hero::Hero(const std::string& name)
     , level_(1)
     , hp_(25)
     , maxhp_(25)
-    , baseStrength_(4)
+    , strength_(4)
     , statPoints_(0)
     , gold_(0)
     , equippedIndex_(-1)
@@ -20,34 +22,37 @@ Hero::Hero(const std::string& name,
            int level,
            int hp,
            int maxhp,
-           int baseStrength,
+           int strength,
            int statPoints)
     : name_(name)
     , xp_(xp)
     , level_(level)
     , hp_(hp)
     , maxhp_(maxhp)
-    , baseStrength_(baseStrength)
+    , strength_(strength)
     , statPoints_(statPoints)
     , gold_(0)
     , equippedIndex_(-1)
 {}
 
-// — Getters
-const std::string& Hero::getName() const { return name_; }
-int Hero::getXp()       const { return xp_; }
-int Hero::getLevel()    const { return level_; }
-int Hero::getHp()       const { return hp_; }
-int Hero::getMaxHp()    const { return maxhp_; }
-int Hero::getStatPoints() const { return statPoints_; }
-int Hero::getGold()     const { return gold_; }
+// —— Getters —— 
 
-// Returnerer base + bonus fra aktuelt udstyret våben
+const std::string& Hero::getName() const     { return name_; }
+int Hero::getXp() const                     { return xp_; }
+int Hero::getLevel() const                  { return level_; }
+int Hero::getHp() const                     { return hp_; }
+int Hero::getMaxHp() const                  { return maxhp_; }
+int Hero::getStrength() const               { return strength_; }
+int Hero::getStatPoints() const             { return statPoints_; }
+int Hero::getGold() const                   { return gold_; }
+
+// —— Combat —— 
+
 int Hero::attack() const {
     if (equippedIndex_ >= 0 && equippedIndex_ < (int)weapons_.size()) {
-        return baseStrength_ + weapons_[equippedIndex_].attackBonus;
+        return strength_ + weapons_[equippedIndex_].attackBonus;
     }
-    return baseStrength_;
+    return strength_;
 }
 
 void Hero::takeDamage(int amount) {
@@ -55,36 +60,75 @@ void Hero::takeDamage(int amount) {
     if (hp_ < 0) hp_ = 0;
 }
 
-// Øg kill-count på det udstyrede våben
 void Hero::recordKill() {
     if (equippedIndex_ >= 0 && equippedIndex_ < (int)weapons_.size()) {
         weapons_[equippedIndex_].kills++;
         std::cout << name_ << " dræbte et monster med “"
                   << weapons_[equippedIndex_].name << "” "
-                  << "(total kills: " << weapons_[equippedIndex_].kills << ").\n";
+                  << "(total kills: " << weapons_[equippedIndex_].kills << ")\n";
     }
 }
 
-// — XP & level 
+// —— XP & Leveling —— 
+
 int Hero::xpThreshold() const {
     return level_ * 1000;
 }
-void Hero::addXp(int amount) { /* ... */ }
-bool Hero::canLevelUp() const  { /* ... */ }
-bool Hero::levelUp()          { /* ... */ }
 
-// — Stat-allokering 
-bool Hero::allocateStats(int hpPoints, int strengthPoints) { /* ... */ }
-void Hero::restoreHp()                                { /* ... */ }
-void Hero::setMaxHp(int maxhp)                        { /* ... */ }
+void Hero::addXp(int amount) {
+    xp_ += amount;
+    if (xp_ < 0) xp_ = 0;
+    std::cout << name_ << " har nu " << xp_ << " XP.\n";
+    if (canLevelUp()) {
+        std::cout << name_ << " kan level up!\n";
+    }
+}
 
-// — Guld 
+bool Hero::canLevelUp() const {
+    return xp_ >= xpThreshold();
+}
+
+bool Hero::levelUp() {
+    if (!canLevelUp()) return false;
+    xp_ -= xpThreshold();
+    level_++;
+    statPoints_ += 5;
+    return true;
+}
+
+// —— Stat Allocation —— 
+
+bool Hero::allocateStats(int hpPoints, int strengthPoints) {
+    if (hpPoints < 0 || strengthPoints < 0) return false;
+    if (hpPoints + strengthPoints > statPoints_) return false;
+
+    maxhp_    += hpPoints;
+    strength_ += strengthPoints;
+    statPoints_ -= (hpPoints + strengthPoints);
+
+    if (hp_ > maxhp_) hp_ = maxhp_;
+    return true;
+}
+
+void Hero::restoreHp() {
+    hp_ = maxhp_;
+    xp_ -= 100;
+}
+
+void Hero::setMaxHp(int maxhp) {
+    maxhp_ = maxhp;
+    if (hp_ > maxhp_) hp_ = maxhp_;
+}
+
+// —— Gold —— 
+
 void Hero::addGold(int amount) {
     gold_ += amount;
     std::cout << name_ << " har nu " << gold_ << " guld.\n";
 }
 
-// — Inventory & equipment —
+// —— Inventory & Equipment —— 
+
 void Hero::addWeapon(const std::string& name, int attackBonus) {
     weapons_.push_back({ name, attackBonus, 0 });
     std::cout << name_ << " erhvervede våbenet “" << name
@@ -106,7 +150,7 @@ bool Hero::equipWeapon(int index) {
     return true;
 }
 
-void Hero::showWeapons() const {
+void Hero::showWeapons() {
     if (weapons_.empty()) {
         std::cout << name_ << " har ingen våben.\n";
         return;

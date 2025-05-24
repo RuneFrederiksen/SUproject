@@ -201,6 +201,30 @@ Hero.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Hero.cpp.s
 .PHONY : Hero.cpp.s
 
+Shop.o: Shop.cpp.o
+.PHONY : Shop.o
+
+# target to build an object file
+Shop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Shop.cpp.o
+.PHONY : Shop.cpp.o
+
+Shop.i: Shop.cpp.i
+.PHONY : Shop.i
+
+# target to preprocess a source file
+Shop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Shop.cpp.i
+.PHONY : Shop.cpp.i
+
+Shop.s: Shop.cpp.s
+.PHONY : Shop.s
+
+# target to generate assembly for a file
+Shop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Shop.cpp.s
+.PHONY : Shop.cpp.s
+
 grotte.o: grotte.cpp.o
 .PHONY : grotte.o
 
@@ -267,6 +291,9 @@ help:
 	@echo "... Hero.o"
 	@echo "... Hero.i"
 	@echo "... Hero.s"
+	@echo "... Shop.o"
+	@echo "... Shop.i"
+	@echo "... Shop.s"
 	@echo "... grotte.o"
 	@echo "... grotte.i"
 	@echo "... grotte.s"

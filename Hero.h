@@ -1,4 +1,4 @@
-
+// Hero.h
 #ifndef HERO_H
 #define HERO_H
 
@@ -8,7 +8,7 @@
 struct Weapon {
     std::string name;
     int attackBonus;
-    int kills;          // Antal monstre dræbt med dette våben
+    int kills;   // number of monsters killed with this weapon
 };
 
 class Hero {
@@ -19,7 +19,7 @@ public:
          int level,
          int hp,
          int maxhp,
-         int baseStrength,
+         int strength,
          int statPoints);
 
     // Getters
@@ -28,34 +28,33 @@ public:
     int getLevel() const;
     int getHp() const;
     int getMaxHp() const;
+    int getStrength() const;    // base strength without weapon bonus
     int getStatPoints() const;
     int getGold() const;
 
     // Combat
-    int attack() const;             
+    int attack() const;         // strength + bonus from equipped weapon
     void takeDamage(int amount);
+    void recordKill();          // increment kill count on equipped weapon
 
-    // Når et monster dræbes
-    void recordKill();
-
-    // XP & level
+    // XP & leveling
     int xpThreshold() const;
     void addXp(int amount);
     bool canLevelUp() const;
     bool levelUp();
 
-    // Stat-allokering
+    // Stat allocation
     bool allocateStats(int hpPoints, int strengthPoints);
-    void restoreHp();
+    void restoreHp();           // restores to max HP, costs 100 XP
     void setMaxHp(int maxhp);
 
-    // Guld
+    // Gold
     void addGold(int amount);
 
     // Inventory & equipment
     void addWeapon(const std::string& name, int attackBonus);
-    bool equipWeapon(int index);    
-    void showWeapons() const;
+    bool equipWeapon(int index);  
+    void showWeapons();          // lists weapons and allows equipping
 
 private:
     std::string name_;
@@ -63,12 +62,12 @@ private:
     int level_;
     int hp_;
     int maxhp_;
-    int baseStrength_;
+    int strength_;     // base strength
     int statPoints_;
     int gold_;
 
     std::vector<Weapon> weapons_;
-    int equippedIndex_;    // -1 hvis intet våben er udstyret
+    int equippedIndex_;  // index into weapons_, -1 if none equipped
 };
 
 #endif // HERO_H

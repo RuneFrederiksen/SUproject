@@ -1,12 +1,15 @@
+// GameEngine.cpp
+
 #include "GameEngine.h"
+#include "Shop.h"
 #include <iostream>
 #include <fstream>
 #include <thread>
 #include <chrono>
+#include <limits>
 
 GameEngine::GameEngine()
 {
-   
 }
 
 void GameEngine::run()
@@ -28,15 +31,10 @@ void GameEngine::showMainMenu()
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
     switch (choice) {
-        case 1:
-            newGame();
-            break;
-        case 2:
-            loadGame();
-            break;
+        case 1: newGame(); break;
+        case 2: loadGame(); break;
         case 3:
-        default:
-            std::exit(0);
+        default: std::exit(0);
     }
 }
 
@@ -74,12 +72,11 @@ void GameEngine::loadGame()
     in.close();
 
     hero_ = std::make_unique<Hero>(name, xp, level, hp, maxhp, strength, statPoints);
-    hero_->addGold(gold - hero_->getGold()); 
+    hero_->addGold(gold - hero_->getGold());
 
     std::cout << "Game loaded for " << name << ".\n";
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-    
     while (hero_ && hero_->getHp() > 0) {
         showAdventureMenu();
     }
@@ -93,16 +90,14 @@ void GameEngine::saveGame() const
     if (!hero_) return;
 
     std::ofstream out("savegame.dat", std::ios::binary);
-    
     out << hero_->getName() << "\n"
-        << hero_->getXp()      << " "
-        << hero_->getLevel()   << " "
-        << hero_->getHp()      << " "
-        << hero_->getMaxHp()   << " "
-        << hero_->getStrength()<< " "
-        << hero_->getStatPoints() << " "
-        << hero_->getGold()
-        << "\n";
+        << hero_->getXp()       << " "
+        << hero_->getLevel()    << " "
+        << hero_->getHp()       << " "
+        << hero_->getMaxHp()    << " "
+        << hero_->getStrength() << " "
+        << hero_->getStatPoints()<< " "
+        << hero_->getGold()     << "\n";
     out.close();
 
     std::cout << "Game saved.\n";
@@ -111,13 +106,12 @@ void GameEngine::saveGame() const
 
 void GameEngine::showAdventureMenu()
 {
-   
     if (hero_) {
         std::cout << "\n[ " << hero_->getName()
-                  << " — HP: "    << hero_->getHp()   << "/" << hero_->getMaxHp()
-                  << ", Skade: "  << hero_->attack()
-                  << ", XP: "     << hero_->getXp()
-                  << ", Guld: "   << hero_->getGold()
+                  << " — HP: "   << hero_->getHp()   << "/" << hero_->getMaxHp()
+                  << ", Skade: " << hero_->attack()
+                  << ", XP: "    << hero_->getXp()
+                  << ", Guld: "  << hero_->getGold()
                   << " ]\n";
     }
 
@@ -125,9 +119,11 @@ void GameEngine::showAdventureMenu()
               << "1. Level Up\n"
               << "2. Heal Up\n"
               << "3. Gå ind i grotten\n"
-              << "4. Exit and Save Game\n"
+              << "4. Åbn Butik\n"
+              << "5. Vis Inventory\n"
+              << "6. Exit and Save Game\n"
               << "Choice: ";
-    int choice = getChoice(1, 4);
+    int choice = getChoice(1, 6);
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
     switch (choice) {
@@ -147,6 +143,16 @@ void GameEngine::showAdventureMenu()
             }
             break;
         case 4:
+            if (hero_) {
+                shop_.open(*hero_);
+            }
+            break;
+        case 5:
+            if (hero_) {
+                hero_->showWeapons();
+            }
+            break;
+        case 6:
         default:
             saveGame();
             std::exit(0);

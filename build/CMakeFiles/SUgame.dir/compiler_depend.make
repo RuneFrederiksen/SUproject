@@ -471,12 +471,15 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/c++/13/bits/requires_hosted.h \
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/bits/stl_algobase.h \
+  /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
   /usr/include/c++/13/bits/stl_function.h \
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
   /usr/include/c++/13/bits/stl_pair.h \
+  /usr/include/c++/13/bits/stl_uninitialized.h \
+  /usr/include/c++/13/bits/stl_vector.h \
   /usr/include/c++/13/bits/streambuf.tcc \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
@@ -484,6 +487,7 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
+  /usr/include/c++/13/bits/vector.tcc \
   /usr/include/c++/13/cctype \
   /usr/include/c++/13/cerrno \
   /usr/include/c++/13/clocale \
@@ -505,6 +509,7 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/c++/13/iosfwd \
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
+  /usr/include/c++/13/limits \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/pstl_config.h \
@@ -516,6 +521,7 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
+  /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -639,6 +645,7 @@ CMakeFiles/SUgame.dir/grotte.cpp.o: /home/rune/Documents/2.\ semester/softwareud
   /usr/include/c++/13/bits/basic_string.tcc \
   /usr/include/c++/13/bits/char_traits.h \
   /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/chrono.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
@@ -664,6 +671,7 @@ CMakeFiles/SUgame.dir/grotte.cpp.o: /home/rune/Documents/2.\ semester/softwareud
   /usr/include/c++/13/bits/new_allocator.h \
   /usr/include/c++/13/bits/ostream.tcc \
   /usr/include/c++/13/bits/ostream_insert.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/postypes.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/ptr_traits.h \
@@ -675,6 +683,7 @@ CMakeFiles/SUgame.dir/grotte.cpp.o: /home/rune/Documents/2.\ semester/softwareud
   /usr/include/c++/13/bits/specfun.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_thread.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
@@ -693,19 +702,23 @@ CMakeFiles/SUgame.dir/grotte.cpp.o: /home/rune/Documents/2.\ semester/softwareud
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/this_thread_sleep.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
+  /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bits/vector.tcc \
   /usr/include/c++/13/cctype \
   /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/chrono \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdint \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/cwchar \
   /usr/include/c++/13/cwctype \
   /usr/include/c++/13/debug/assertions.h \
@@ -730,12 +743,14 @@ CMakeFiles/SUgame.dir/grotte.cpp.o: /home/rune/Documents/2.\ semester/softwareud
   /usr/include/c++/13/pstl/glue_numeric_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/random \
+  /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/system_error \
+  /usr/include/c++/13/thread \
   /usr/include/c++/13/tr1/bessel_function.tcc \
   /usr/include/c++/13/tr1/beta_function.tcc \
   /usr/include/c++/13/tr1/ell_integral.tcc \
@@ -875,6 +890,7 @@ CMakeFiles/SUgame.dir/main.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Enemy.h \
   /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/GameEngine.h \
   /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Hero.h \
+  /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Shop.h \
   /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/grotte.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -1106,6 +1122,8 @@ CMakeFiles/SUgame.dir/main.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
 
+
+/home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Shop.h:
 
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/main.cpp:
 

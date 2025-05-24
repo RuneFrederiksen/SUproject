@@ -4,6 +4,7 @@
 #include "Hero.h"
 #include "Enemy.h"
 #include "grotte.h"
+#include "Shop.h" 
 
 class GameEngine {
 public:
@@ -23,4 +24,5 @@ private:
 
     std::unique_ptr<Hero> hero_;
     Grotte                 grotte_;   
+    Shop shop_; 
 };

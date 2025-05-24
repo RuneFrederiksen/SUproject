@@ -161,12 +161,12 @@ CMakeFiles/SUgame.dir/Gameengine.cpp.o: \
  /usr/include/c++/13/bits/basic_string.tcc \
  /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator_args.h \
- /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Enemy.h \
- /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/grotte.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/random \
- /usr/include/c++/13/cmath /usr/include/math.h \
+ /usr/include/c++/13/bits/vector.tcc \
+ /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Enemy.h \
+ /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/grotte.h \
+ /usr/include/c++/13/random /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -195,6 +195,7 @@ CMakeFiles/SUgame.dir/Gameengine.cpp.o: \
  /usr/include/c++/13/bits/random.tcc /usr/include/c++/13/numeric \
  /usr/include/c++/13/bits/stl_numeric.h \
  /usr/include/c++/13/pstl/glue_numeric_defs.h \
+ /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Shop.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/ios_base.h \
  /usr/include/c++/13/bits/locale_classes.h \
