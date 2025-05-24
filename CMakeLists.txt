@@ -1,23 +1,20 @@
-cmake_minimum_required(VERSION 3.10)
-project(SUgame)
+cmake_minimum_required(VERSION 3.5)
+project(RPGGame)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 11)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+find_package(SQLite3 REQUIRED)
+include_directories(${SQLite3_INCLUDE_DIRS})
 
-set(SOURCES
+add_executable(RPGGame
     main.cpp
+    GameEngine.cpp
     Hero.cpp
     Enemy.cpp
-    Gameengine.cpp
     grotte.cpp
+    Weapon.cpp
+    DBManager.cpp
 )
 
-
-add_executable(SUgame ${SOURCES})
-
-set_target_properties(SUgame PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
-)
+target_link_libraries(RPGGame ${SQLite3_LIBRARIES})
 
