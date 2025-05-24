@@ -8,11 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Database.cpp" "CMakeFiles/SUgame.dir/Database.cpp.o" "gcc" "CMakeFiles/SUgame.dir/Database.cpp.o.d"
   "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Enemy.cpp" "CMakeFiles/SUgame.dir/Enemy.cpp.o" "gcc" "CMakeFiles/SUgame.dir/Enemy.cpp.o.d"
-  "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Gameengine.cpp" "CMakeFiles/SUgame.dir/Gameengine.cpp.o" "gcc" "CMakeFiles/SUgame.dir/Gameengine.cpp.o.d"
+  "/home/rune/Documents/2. semester/softwareudvikling/SUproject/GameEngine.cpp" "CMakeFiles/SUgame.dir/GameEngine.cpp.o" "gcc" "CMakeFiles/SUgame.dir/GameEngine.cpp.o.d"
+  "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Grotte.cpp" "CMakeFiles/SUgame.dir/Grotte.cpp.o" "gcc" "CMakeFiles/SUgame.dir/Grotte.cpp.o.d"
   "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Hero.cpp" "CMakeFiles/SUgame.dir/Hero.cpp.o" "gcc" "CMakeFiles/SUgame.dir/Hero.cpp.o.d"
   "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Shop.cpp" "CMakeFiles/SUgame.dir/Shop.cpp.o" "gcc" "CMakeFiles/SUgame.dir/Shop.cpp.o.d"
-  "/home/rune/Documents/2. semester/softwareudvikling/SUproject/grotte.cpp" "CMakeFiles/SUgame.dir/grotte.cpp.o" "gcc" "CMakeFiles/SUgame.dir/grotte.cpp.o.d"
   "/home/rune/Documents/2. semester/softwareudvikling/SUproject/main.cpp" "CMakeFiles/SUgame.dir/main.cpp.o" "gcc" "CMakeFiles/SUgame.dir/main.cpp.o.d"
   )
 

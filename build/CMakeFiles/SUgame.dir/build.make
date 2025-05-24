@@ -111,33 +111,33 @@ CMakeFiles/SUgame.dir/Enemy.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SUgame.dir/Enemy.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Enemy.cpp" -o CMakeFiles/SUgame.dir/Enemy.cpp.s
 
-CMakeFiles/SUgame.dir/Gameengine.cpp.o: CMakeFiles/SUgame.dir/flags.make
-CMakeFiles/SUgame.dir/Gameengine.cpp.o: /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Gameengine.cpp
-CMakeFiles/SUgame.dir/Gameengine.cpp.o: CMakeFiles/SUgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SUgame.dir/Gameengine.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SUgame.dir/Gameengine.cpp.o -MF CMakeFiles/SUgame.dir/Gameengine.cpp.o.d -o CMakeFiles/SUgame.dir/Gameengine.cpp.o -c "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Gameengine.cpp"
+CMakeFiles/SUgame.dir/GameEngine.cpp.o: CMakeFiles/SUgame.dir/flags.make
+CMakeFiles/SUgame.dir/GameEngine.cpp.o: /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/GameEngine.cpp
+CMakeFiles/SUgame.dir/GameEngine.cpp.o: CMakeFiles/SUgame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SUgame.dir/GameEngine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SUgame.dir/GameEngine.cpp.o -MF CMakeFiles/SUgame.dir/GameEngine.cpp.o.d -o CMakeFiles/SUgame.dir/GameEngine.cpp.o -c "/home/rune/Documents/2. semester/softwareudvikling/SUproject/GameEngine.cpp"
 
-CMakeFiles/SUgame.dir/Gameengine.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SUgame.dir/Gameengine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Gameengine.cpp" > CMakeFiles/SUgame.dir/Gameengine.cpp.i
+CMakeFiles/SUgame.dir/GameEngine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SUgame.dir/GameEngine.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/rune/Documents/2. semester/softwareudvikling/SUproject/GameEngine.cpp" > CMakeFiles/SUgame.dir/GameEngine.cpp.i
 
-CMakeFiles/SUgame.dir/Gameengine.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SUgame.dir/Gameengine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Gameengine.cpp" -o CMakeFiles/SUgame.dir/Gameengine.cpp.s
+CMakeFiles/SUgame.dir/GameEngine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SUgame.dir/GameEngine.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/rune/Documents/2. semester/softwareudvikling/SUproject/GameEngine.cpp" -o CMakeFiles/SUgame.dir/GameEngine.cpp.s
 
-CMakeFiles/SUgame.dir/grotte.cpp.o: CMakeFiles/SUgame.dir/flags.make
-CMakeFiles/SUgame.dir/grotte.cpp.o: /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/grotte.cpp
-CMakeFiles/SUgame.dir/grotte.cpp.o: CMakeFiles/SUgame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SUgame.dir/grotte.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SUgame.dir/grotte.cpp.o -MF CMakeFiles/SUgame.dir/grotte.cpp.o.d -o CMakeFiles/SUgame.dir/grotte.cpp.o -c "/home/rune/Documents/2. semester/softwareudvikling/SUproject/grotte.cpp"
+CMakeFiles/SUgame.dir/Grotte.cpp.o: CMakeFiles/SUgame.dir/flags.make
+CMakeFiles/SUgame.dir/Grotte.cpp.o: /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Grotte.cpp
+CMakeFiles/SUgame.dir/Grotte.cpp.o: CMakeFiles/SUgame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SUgame.dir/Grotte.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SUgame.dir/Grotte.cpp.o -MF CMakeFiles/SUgame.dir/Grotte.cpp.o.d -o CMakeFiles/SUgame.dir/Grotte.cpp.o -c "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Grotte.cpp"
 
-CMakeFiles/SUgame.dir/grotte.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SUgame.dir/grotte.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/rune/Documents/2. semester/softwareudvikling/SUproject/grotte.cpp" > CMakeFiles/SUgame.dir/grotte.cpp.i
+CMakeFiles/SUgame.dir/Grotte.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SUgame.dir/Grotte.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Grotte.cpp" > CMakeFiles/SUgame.dir/Grotte.cpp.i
 
-CMakeFiles/SUgame.dir/grotte.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SUgame.dir/grotte.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/rune/Documents/2. semester/softwareudvikling/SUproject/grotte.cpp" -o CMakeFiles/SUgame.dir/grotte.cpp.s
+CMakeFiles/SUgame.dir/Grotte.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SUgame.dir/Grotte.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Grotte.cpp" -o CMakeFiles/SUgame.dir/Grotte.cpp.s
 
 CMakeFiles/SUgame.dir/Shop.cpp.o: CMakeFiles/SUgame.dir/flags.make
 CMakeFiles/SUgame.dir/Shop.cpp.o: /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Shop.cpp
@@ -153,14 +153,29 @@ CMakeFiles/SUgame.dir/Shop.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SUgame.dir/Shop.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Shop.cpp" -o CMakeFiles/SUgame.dir/Shop.cpp.s
 
+CMakeFiles/SUgame.dir/Database.cpp.o: CMakeFiles/SUgame.dir/flags.make
+CMakeFiles/SUgame.dir/Database.cpp.o: /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Database.cpp
+CMakeFiles/SUgame.dir/Database.cpp.o: CMakeFiles/SUgame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/SUgame.dir/Database.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SUgame.dir/Database.cpp.o -MF CMakeFiles/SUgame.dir/Database.cpp.o.d -o CMakeFiles/SUgame.dir/Database.cpp.o -c "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Database.cpp"
+
+CMakeFiles/SUgame.dir/Database.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SUgame.dir/Database.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Database.cpp" > CMakeFiles/SUgame.dir/Database.cpp.i
+
+CMakeFiles/SUgame.dir/Database.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SUgame.dir/Database.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/rune/Documents/2. semester/softwareudvikling/SUproject/Database.cpp" -o CMakeFiles/SUgame.dir/Database.cpp.s
+
 # Object files for target SUgame
 SUgame_OBJECTS = \
 "CMakeFiles/SUgame.dir/main.cpp.o" \
 "CMakeFiles/SUgame.dir/Hero.cpp.o" \
 "CMakeFiles/SUgame.dir/Enemy.cpp.o" \
-"CMakeFiles/SUgame.dir/Gameengine.cpp.o" \
-"CMakeFiles/SUgame.dir/grotte.cpp.o" \
-"CMakeFiles/SUgame.dir/Shop.cpp.o"
+"CMakeFiles/SUgame.dir/GameEngine.cpp.o" \
+"CMakeFiles/SUgame.dir/Grotte.cpp.o" \
+"CMakeFiles/SUgame.dir/Shop.cpp.o" \
+"CMakeFiles/SUgame.dir/Database.cpp.o"
 
 # External object files for target SUgame
 SUgame_EXTERNAL_OBJECTS =
@@ -168,12 +183,14 @@ SUgame_EXTERNAL_OBJECTS =
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/main.cpp.o
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/Hero.cpp.o
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/Enemy.cpp.o
-/home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/Gameengine.cpp.o
-/home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/grotte.cpp.o
+/home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/GameEngine.cpp.o
+/home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/Grotte.cpp.o
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/Shop.cpp.o
+/home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/Database.cpp.o
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/build.make
+/home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: /usr/lib/x86_64-linux-gnu/libsqlite3.so
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/bin/SUgame: CMakeFiles/SUgame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable \"/home/rune/Documents/2. semester/softwareudvikling/SUproject/bin/SUgame\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/rune/Documents/2. semester/softwareudvikling/SUproject/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable \"/home/rune/Documents/2. semester/softwareudvikling/SUproject/bin/SUgame\""
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SUgame.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

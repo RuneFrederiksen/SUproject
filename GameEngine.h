@@ -21,7 +21,7 @@ private:
     void showAdventureMenu();
     void manualLevelUp();
     void allocateStats();
-    void saveGame();
+    void saveAndExit();
     int getChoice(int min, int max) const;
 
     std::unique_ptr<Hero> hero_;

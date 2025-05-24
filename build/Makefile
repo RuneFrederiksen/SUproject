@@ -129,6 +129,30 @@ SUgame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/build
 .PHONY : SUgame/fast
 
+Database.o: Database.cpp.o
+.PHONY : Database.o
+
+# target to build an object file
+Database.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Database.cpp.o
+.PHONY : Database.cpp.o
+
+Database.i: Database.cpp.i
+.PHONY : Database.i
+
+# target to preprocess a source file
+Database.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Database.cpp.i
+.PHONY : Database.cpp.i
+
+Database.s: Database.cpp.s
+.PHONY : Database.s
+
+# target to generate assembly for a file
+Database.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Database.cpp.s
+.PHONY : Database.cpp.s
+
 Enemy.o: Enemy.cpp.o
 .PHONY : Enemy.o
 
@@ -153,29 +177,53 @@ Enemy.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Enemy.cpp.s
 .PHONY : Enemy.cpp.s
 
-Gameengine.o: Gameengine.cpp.o
-.PHONY : Gameengine.o
+GameEngine.o: GameEngine.cpp.o
+.PHONY : GameEngine.o
 
 # target to build an object file
-Gameengine.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Gameengine.cpp.o
-.PHONY : Gameengine.cpp.o
+GameEngine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/GameEngine.cpp.o
+.PHONY : GameEngine.cpp.o
 
-Gameengine.i: Gameengine.cpp.i
-.PHONY : Gameengine.i
+GameEngine.i: GameEngine.cpp.i
+.PHONY : GameEngine.i
 
 # target to preprocess a source file
-Gameengine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Gameengine.cpp.i
-.PHONY : Gameengine.cpp.i
+GameEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/GameEngine.cpp.i
+.PHONY : GameEngine.cpp.i
 
-Gameengine.s: Gameengine.cpp.s
-.PHONY : Gameengine.s
+GameEngine.s: GameEngine.cpp.s
+.PHONY : GameEngine.s
 
 # target to generate assembly for a file
-Gameengine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Gameengine.cpp.s
-.PHONY : Gameengine.cpp.s
+GameEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/GameEngine.cpp.s
+.PHONY : GameEngine.cpp.s
+
+Grotte.o: Grotte.cpp.o
+.PHONY : Grotte.o
+
+# target to build an object file
+Grotte.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Grotte.cpp.o
+.PHONY : Grotte.cpp.o
+
+Grotte.i: Grotte.cpp.i
+.PHONY : Grotte.i
+
+# target to preprocess a source file
+Grotte.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Grotte.cpp.i
+.PHONY : Grotte.cpp.i
+
+Grotte.s: Grotte.cpp.s
+.PHONY : Grotte.s
+
+# target to generate assembly for a file
+Grotte.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Grotte.cpp.s
+.PHONY : Grotte.cpp.s
 
 Hero.o: Hero.cpp.o
 .PHONY : Hero.o
@@ -225,30 +273,6 @@ Shop.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/Shop.cpp.s
 .PHONY : Shop.cpp.s
 
-grotte.o: grotte.cpp.o
-.PHONY : grotte.o
-
-# target to build an object file
-grotte.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/grotte.cpp.o
-.PHONY : grotte.cpp.o
-
-grotte.i: grotte.cpp.i
-.PHONY : grotte.i
-
-# target to preprocess a source file
-grotte.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/grotte.cpp.i
-.PHONY : grotte.cpp.i
-
-grotte.s: grotte.cpp.s
-.PHONY : grotte.s
-
-# target to generate assembly for a file
-grotte.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SUgame.dir/build.make CMakeFiles/SUgame.dir/grotte.cpp.s
-.PHONY : grotte.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -282,21 +306,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SUgame"
+	@echo "... Database.o"
+	@echo "... Database.i"
+	@echo "... Database.s"
 	@echo "... Enemy.o"
 	@echo "... Enemy.i"
 	@echo "... Enemy.s"
-	@echo "... Gameengine.o"
-	@echo "... Gameengine.i"
-	@echo "... Gameengine.s"
+	@echo "... GameEngine.o"
+	@echo "... GameEngine.i"
+	@echo "... GameEngine.s"
+	@echo "... Grotte.o"
+	@echo "... Grotte.i"
+	@echo "... Grotte.s"
 	@echo "... Hero.o"
 	@echo "... Hero.i"
 	@echo "... Hero.s"
 	@echo "... Shop.o"
 	@echo "... Shop.i"
 	@echo "... Shop.s"
-	@echo "... grotte.o"
-	@echo "... grotte.i"
-	@echo "... grotte.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

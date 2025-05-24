@@ -23,28 +23,19 @@ void GameEngine::showMainMenu() {
     std::cout << "\n=== Hovedmenu ===\n"
               << "1. New Game\n"
               << "2. Load Game\n"
-              << "3. Save Game\n"
+              << "3. Save & Exit\n"
               << "4. Analyse\n"
-              << "5. Exit\n"
+              << "5. Exit Without Saving\n"
               << "Choice: ";
     int choice = getChoice(1, 5);
 
     switch (choice) {
-        case 1:
-            newGame();
-            break;
-        case 2:
-            loadGame();
-            break;
-        case 3:
-            saveGame();
-            break;
-        case 4:
-            db_.run();
-            break;
+        case 1: newGame();      break;
+        case 2: loadGame();     break;
+        case 3: saveAndExit();  break;
+        case 4: db_.run();      break;
         case 5:
-        default:
-            std::exit(0);
+        default: std::exit(0);
     }
 }
 
@@ -76,15 +67,18 @@ void GameEngine::loadGame() {
         std::cout << (i+1) << ". " << names[i] << "\n";
     }
     int idx = getChoice(1, (int)names.size());
+
     Hero tmp("",0,0,0,0,0,0);
     if (!db_.loadHero(names[idx-1], tmp)) {
         std::cout << "Load fejlede for " << names[idx-1] << ".\n";
         return;
     }
+
     hero_ = std::make_unique<Hero>(tmp);
     for (auto& w : db_.loadWeaponKills(tmp.getName())) {
         hero_->addWeapon(w);
     }
+
     while (hero_ && hero_->getHp() > 0) {
         showAdventureMenu();
     }
@@ -111,26 +105,17 @@ void GameEngine::showAdventureMenu() {
     int choice = getChoice(1, 6);
 
     switch (choice) {
-        case 1:
-            manualLevelUp();
-            break;
+        case 1: manualLevelUp();               break;
         case 2:
             hero_->restoreHp();
             std::cout << hero_->getName()
                       << " er fuldt helbredt (-100 XP)\n";
             break;
-        case 3:
-            grotte_.enter(*hero_);
-            break;
-        case 4:
-            shop_.open(*hero_);
-            break;
-        case 5:
-            hero_->showWeapons();
-            break;
+        case 3: grotte_.enter(*hero_);         break;
+        case 4: shop_.open(*hero_);            break;
+        case 5: hero_->showWeapons();          break;
         case 6:
-        default:
-            return;
+        default: return;                       // tilbage til hovedmenu
     }
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
@@ -161,14 +146,15 @@ void GameEngine::allocateStats() {
     }
 }
 
-void GameEngine::saveGame() {
+void GameEngine::saveAndExit() {
     if (!hero_) {
         std::cout << "Intet spil at gemme.\n";
     } else {
         db_.saveHero(*hero_);
         db_.saveWeaponKills(*hero_);
-        std::cout << "Spillet er gemt i databasen.\n";
+        std::cout << "Spillet er gemt. Afslutter...\n";
     }
+    std::exit(0);
 }
 
 int GameEngine::getChoice(int min, int max) const {

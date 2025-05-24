@@ -1,5 +1,6 @@
 // Shop.cpp
 #include "Shop.h"
+#include "Hero.h"      // sørg for at få Weapon-def og addWeapon(const Weapon&)
 #include <iostream>
 #include <limits>
 #include <thread>
@@ -55,11 +56,16 @@ void Shop::open(Hero& hero)
             std::cout << "Ikke nok guld til " << item.name << ".\n";
         } else {
             hero.addGold(-item.price);
-            // hero::addWeapon skal tage (name, damage, strengthModifier, durability)
-            hero.addWeapon(item.name,
-                           item.damage,
-                           item.strengthModifier,
-                           item.durability);
+
+            // Her laver vi en Weapon og kalder den ene addWeapon(Weapon&)
+            Weapon w;
+            w.name             = item.name;
+            w.damage           = item.damage;
+            w.strengthModifier = item.strengthModifier;
+            w.durability       = item.durability;
+            w.kills            = 0;
+
+            hero.addWeapon(w);
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(500));

@@ -1,5 +1,5 @@
-CMakeFiles/SUgame.dir/main.cpp.o: \
- /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/main.cpp \
+CMakeFiles/SUgame.dir/GameEngine.cpp.o: \
+ /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/GameEngine.cpp \
  /usr/include/stdc-predef.h \
  /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/GameEngine.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
@@ -197,4 +197,27 @@ CMakeFiles/SUgame.dir/main.cpp.o: \
  /usr/include/c++/13/pstl/glue_numeric_defs.h \
  /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Enemy.h \
  /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Database.h \
- /usr/include/sqlite3.h
+ /usr/include/sqlite3.h /usr/include/c++/13/iostream \
+ /usr/include/c++/13/ostream /usr/include/c++/13/ios \
+ /usr/include/c++/13/bits/ios_base.h \
+ /usr/include/c++/13/bits/locale_classes.h \
+ /usr/include/c++/13/bits/locale_classes.tcc \
+ /usr/include/c++/13/system_error \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+ /usr/include/c++/13/stdexcept /usr/include/c++/13/streambuf \
+ /usr/include/c++/13/bits/streambuf.tcc \
+ /usr/include/c++/13/bits/basic_ios.h \
+ /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
+ /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h \
+ /usr/include/c++/13/bits/streambuf_iterator.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h \
+ /usr/include/c++/13/bits/locale_facets.tcc \
+ /usr/include/c++/13/bits/basic_ios.tcc \
+ /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/thread \
+ /usr/include/c++/13/bits/std_thread.h \
+ /usr/include/c++/13/bits/this_thread_sleep.h \
+ /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
+ /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/chrono
