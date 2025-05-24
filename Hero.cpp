@@ -1,4 +1,5 @@
 // Hero.cpp
+
 #include "Hero.h"
 #include <iostream>
 #include <limits>
@@ -37,39 +38,37 @@ Hero::Hero(const std::string& name,
 
 // —— Getters —— 
 
-const std::string& Hero::getName() const   { return name_; }
-int Hero::getXp() const                   { return xp_; }
-int Hero::getLevel() const                { return level_; }
-int Hero::getHp() const                   { return hp_; }
-int Hero::getMaxHp() const                { return maxhp_; }
-int Hero::getStrength() const             { return strength_; }
-int Hero::getStatPoints() const           { return statPoints_; }
-int Hero::getGold() const                 { return gold_; }
+const std::string& Hero::getName() const      { return name_; }
+int Hero::getXp() const                      { return xp_; }
+int Hero::getLevel() const                   { return level_; }
+int Hero::getHp() const                      { return hp_; }
+int Hero::getMaxHp() const                   { return maxhp_; }
+int Hero::getStrength() const                { return strength_; }
+int Hero::getStatPoints() const              { return statPoints_; }
+int Hero::getGold() const                    { return gold_; }
 
 // —— Combat —— 
 
 int Hero::attack() {
-    int totalDamage = strength_;  // start med helte-styrke
+    int totalDamage = strength_;
 
-    if (equippedIndex_ >= 0 && equippedIndex_ < (int)weapons_.size()) {
+    if (equippedIndex_ >= 0 && equippedIndex_ < static_cast<int>(weapons_.size())) {
         Weapon &w = weapons_[equippedIndex_];
         int weaponBonus = w.damage + static_cast<int>(strength_ * w.strengthModifier);
         totalDamage += weaponBonus;
 
-        // Vis angreb og reducer durability
         std::cout << name_ << " angriber med " << w.name
                   << " (+" << weaponBonus << " skade). ";
         w.durability--;
         std::cout << "Holdbarhed tilbage: " << w.durability << "\n";
 
-        // Hvis holdbarheden er opbrugt, fjern våbnet
         if (w.durability <= 0) {
             std::cout << w.name << " er gået i stykker!\n";
             weapons_.erase(weapons_.begin() + equippedIndex_);
             equippedIndex_ = -1;
         }
     } else {
-        std::cout << name_ << " angriber uden våben (" 
+        std::cout << name_ << " angriber uden våben ("
                   << strength_ << " skade).\n";
     }
 
@@ -82,11 +81,11 @@ void Hero::takeDamage(int amount) {
 }
 
 void Hero::recordKill() {
-    if (equippedIndex_ >= 0 && equippedIndex_ < (int)weapons_.size()) {
-        weapons_[equippedIndex_].kills++;
+    if (equippedIndex_ >= 0 && equippedIndex_ < static_cast<int>(weapons_.size())) {
+        Weapon &w = weapons_[equippedIndex_];
+        w.kills++;
         std::cout << name_ << " dræbte et monster med “"
-                  << weapons_[equippedIndex_].name << "” "
-                  << "(total kills: " << weapons_[equippedIndex_].kills << ")\n";
+                  << w.name << "” (total kills: " << w.kills << ")\n";
     }
 }
 
@@ -117,7 +116,7 @@ bool Hero::levelUp() {
     return true;
 }
 
-// —— Stat-allokering —— 
+// —— Stat Allocation —— 
 
 bool Hero::allocateStats(int hpPoints, int strengthPoints) {
     if (hpPoints < 0 || strengthPoints < 0) return false;
@@ -141,41 +140,33 @@ void Hero::setMaxHp(int maxhp) {
     if (hp_ > maxhp_) hp_ = maxhp_;
 }
 
-// —— Guld —— 
+// —— Gold —— 
 
 void Hero::addGold(int amount) {
     gold_ += amount;
     std::cout << name_ << " har nu " << gold_ << " guld.\n";
 }
 
-// —— Inventory & equipment —— 
+// —— Inventory & Equipment —— 
 
-void Hero::addWeapon(const std::string& name,
-                     int damage,
-                     double strengthModifier,
-                     int durability)
-{
-    weapons_.push_back({ name, damage, strengthModifier, durability, 0 });
-    std::cout << name_ << " købte “" << name
-              << "” (+" << damage << " base skade, x"
-              << strengthModifier << " modifier, "
-              << durability << " holdbarhed).\n";
-    // hvis ingen våben er udstyret, udstyr det automatisk
+void Hero::addWeapon(const Weapon& w) {
+    weapons_.push_back(w);
+    std::cout << name_ << " erhvervede våbenet “" << w.name << "”.\n";
     if (equippedIndex_ == -1) {
-        equippedIndex_ = (int)weapons_.size() - 1;
-        std::cout << name_ << " udstyrer automatisk “" << name << "”.\n";
+        equippedIndex_ = static_cast<int>(weapons_.size()) - 1;
+        std::cout << name_ << " udstyrer automatisk “" << w.name << "”.\n";
     }
 }
 
 bool Hero::equipWeapon(int index) {
-    if (index < 0 || index >= (int)weapons_.size()) {
+    if (index < 0 || index >= static_cast<int>(weapons_.size())) {
         std::cout << "Ugyldigt våbenvalg.\n";
         return false;
     }
     equippedIndex_ = index;
-    auto &w = weapons_[index];
-    std::cout << name_ << " udstyrer “" << w.name << "” ("
-              << w.durability << " holdbarhed tilbage).\n";
+    Weapon &w = weapons_[index];
+    std::cout << name_ << " udstyrer “" << w.name
+              << "” (holdbarhed: " << w.durability << ")\n";
     return true;
 }
 
@@ -185,9 +176,9 @@ void Hero::showWeapons() {
         return;
     }
     std::cout << name_ << "s våben:\n";
-    for (int i = 0; i < (int)weapons_.size(); ++i) {
-        const auto& w = weapons_[i];
-        std::cout << " " << (i+1) << ". " << w.name
+    for (int i = 0; i < static_cast<int>(weapons_.size()); ++i) {
+        const Weapon &w = weapons_[i];
+        std::cout << " " << (i + 1) << ". " << w.name
                   << " (+" << w.damage << " skade, x"
                   << w.strengthModifier << " mod., "
                   << w.durability << " holdbarhed, "
@@ -195,9 +186,12 @@ void Hero::showWeapons() {
         if (i == equippedIndex_) std::cout << " [udstyret]";
         std::cout << "\n";
     }
-    std::cout << "Vælg våben at udstyre (1-" << weapons_.size() << "), eller 0 for tilbage: ";
+    std::cout << "Vælg våben at udstyre (1-" << weapons_.size()
+              << "), eller 0 for tilbage: ";
     int choice;
-    while (!(std::cin >> choice) || choice < 0 || choice > (int)weapons_.size()) {
+    while (!(std::cin >> choice) ||
+           choice < 0 ||
+           choice > static_cast<int>(weapons_.size())) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Ugyldigt valg (0-" << weapons_.size() << "): ";
@@ -205,4 +199,8 @@ void Hero::showWeapons() {
     if (choice > 0) {
         equipWeapon(choice - 1);
     }
+}
+
+const std::vector<Weapon>& Hero::getWeapons() const {
+    return weapons_;
 }

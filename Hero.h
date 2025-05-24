@@ -1,4 +1,4 @@
-// Hero.h
+// Hero.h  (note: vi tilføjer getter for weapons_)
 #ifndef HERO_H
 #define HERO_H
 
@@ -7,24 +7,20 @@
 
 struct Weapon {
     std::string name;
-    int damage;               // grundskade
-    double strengthModifier;  // fx 0.5 betyder +50% af hero.strength
-    int durability;           // tilbageværende holdbarhed
-    int kills;                // antal monstre dræbt med dette våben
+    int damage;
+    double strengthModifier;
+    int durability;
+    int kills;
 };
 
 class Hero {
 public:
     Hero(const std::string& name);
     Hero(const std::string& name,
-         int xp,
-         int level,
-         int hp,
-         int maxhp,
-         int strength,
-         int statPoints);
+         int xp, int level, int hp, int maxhp,
+         int strength, int statPoints);
 
-    // Getters
+    // getters…
     const std::string& getName() const;
     int getXp() const;
     int getLevel() const;
@@ -34,45 +30,36 @@ public:
     int getStatPoints() const;
     int getGold() const;
 
-    // Combat
-    int attack();             // beregn skade, opdater durability
-    void takeDamage(int amount);
-    void recordKill();        // +1 kills på udstyret våben
+    // combat & weapons
+    int attack();
+    void takeDamage(int);
+    void recordKill();
 
-    // XP & leveling
+    // xp/level
     int xpThreshold() const;
-    void addXp(int amount);
+    void addXp(int);
     bool canLevelUp() const;
     bool levelUp();
 
-    // Stat-allokering
-    bool allocateStats(int hpPoints, int strengthPoints);
+    // stats
+    bool allocateStats(int hpP,int strP);
     void restoreHp();
-    void setMaxHp(int maxhp);
+    void setMaxHp(int);
 
-    // Guld
-    void addGold(int amount);
+    // gold
+    void addGold(int);
 
-    // Inventory & equipment
-    void addWeapon(const std::string& name,
-                   int damage,
-                   double strengthModifier,
-                   int durability);
-    bool equipWeapon(int index);
-    void showWeapons();       // viser våben og giver mulighed for at udstyre
+    // inventory
+    void addWeapon(const Weapon& w);
+    bool equipWeapon(int idx);
+    void showWeapons();
+    const std::vector<Weapon>& getWeapons() const;
 
 private:
     std::string name_;
-    int xp_;
-    int level_;
-    int hp_;
-    int maxhp_;
-    int strength_;     // base styrke
-    int statPoints_;
-    int gold_;
-
+    int xp_, level_, hp_, maxhp_, strength_, statPoints_, gold_;
     std::vector<Weapon> weapons_;
-    int equippedIndex_;  // index i weapons_, -1 hvis intet udstyret
+    int equippedIndex_;
 };
 
 #endif // HERO_H

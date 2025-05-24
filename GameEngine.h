@@ -1,28 +1,33 @@
-#pragma once
+// GameEngine.h
+#ifndef GAMEENGINE_H
+#define GAMEENGINE_H
 
 #include <memory>
+#include <string>
 #include "Hero.h"
-#include "Enemy.h"
-#include "grotte.h"
-#include "Shop.h" 
+#include "Shop.h"
+#include "Grotte.h"
+#include "Database.h"
 
 class GameEngine {
 public:
-    GameEngine();
+    explicit GameEngine(const std::string& dbFile = "game.db");
     void run();
 
 private:
     void showMainMenu();
     void newGame();
     void loadGame();
-    void saveGame() const;
     void showAdventureMenu();
-
     void manualLevelUp();
     void allocateStats();
-    int  getChoice(int min, int max) const;
+    void saveGame();
+    int getChoice(int min, int max) const;
 
     std::unique_ptr<Hero> hero_;
-    Grotte                 grotte_;   
-    Shop shop_; 
+    Grotte              grotte_;
+    Shop                shop_;
+    Database            db_;
 };
+
+#endif // GAMEENGINE_H

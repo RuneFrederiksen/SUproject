@@ -1,5 +1,5 @@
 
-#include "grotte.h"
+#include "Grotte.h"
 #include <iostream>
 #include <algorithm>
 #include <sstream>
