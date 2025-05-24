@@ -9,7 +9,9 @@
 struct ShopItem {
     std::string name;
     int price;
-    int attackBonus;
+    int damage;               // base skade
+    double strengthModifier;  // fx 0.5 betyder +50% af hero.strength
+    int durability;           // start‐holdbarhed
 };
 
 class Shop {

@@ -109,7 +109,7 @@ void GameEngine::showAdventureMenu()
     if (hero_) {
         std::cout << "\n[ " << hero_->getName()
                   << " — HP: "   << hero_->getHp()   << "/" << hero_->getMaxHp()
-                  << ", Skade: " << hero_->attack()
+                  << ", Skade: " << hero_->getStrength()
                   << ", XP: "    << hero_->getXp()
                   << ", Guld: "  << hero_->getGold()
                   << " ]\n";

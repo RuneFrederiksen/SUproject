@@ -7,8 +7,10 @@
 
 struct Weapon {
     std::string name;
-    int attackBonus;
-    int kills;   // number of monsters killed with this weapon
+    int damage;               // grundskade
+    double strengthModifier;  // fx 0.5 betyder +50% af hero.strength
+    int durability;           // tilbageværende holdbarhed
+    int kills;                // antal monstre dræbt med dette våben
 };
 
 class Hero {
@@ -28,14 +30,14 @@ public:
     int getLevel() const;
     int getHp() const;
     int getMaxHp() const;
-    int getStrength() const;    // base strength without weapon bonus
+    int getStrength() const;
     int getStatPoints() const;
     int getGold() const;
 
     // Combat
-    int attack() const;         // strength + bonus from equipped weapon
+    int attack();             // beregn skade, opdater durability
     void takeDamage(int amount);
-    void recordKill();          // increment kill count on equipped weapon
+    void recordKill();        // +1 kills på udstyret våben
 
     // XP & leveling
     int xpThreshold() const;
@@ -43,18 +45,21 @@ public:
     bool canLevelUp() const;
     bool levelUp();
 
-    // Stat allocation
+    // Stat-allokering
     bool allocateStats(int hpPoints, int strengthPoints);
-    void restoreHp();           // restores to max HP, costs 100 XP
+    void restoreHp();
     void setMaxHp(int maxhp);
 
-    // Gold
+    // Guld
     void addGold(int amount);
 
     // Inventory & equipment
-    void addWeapon(const std::string& name, int attackBonus);
-    bool equipWeapon(int index);  
-    void showWeapons();          // lists weapons and allows equipping
+    void addWeapon(const std::string& name,
+                   int damage,
+                   double strengthModifier,
+                   int durability);
+    bool equipWeapon(int index);
+    void showWeapons();       // viser våben og giver mulighed for at udstyre
 
 private:
     std::string name_;
@@ -62,12 +67,12 @@ private:
     int level_;
     int hp_;
     int maxhp_;
-    int strength_;     // base strength
+    int strength_;     // base styrke
     int statPoints_;
     int gold_;
 
     std::vector<Weapon> weapons_;
-    int equippedIndex_;  // index into weapons_, -1 if none equipped
+    int equippedIndex_;  // index i weapons_, -1 hvis intet udstyret
 };
 
 #endif // HERO_H
