@@ -105,8 +105,6 @@ void Hero::recordKill() {
     if (equippedIndex_ >= 0 && equippedIndex_ < static_cast<int>(weapons_.size())) {
         Weapon &w = weapons_[equippedIndex_];
         w.kills++;
-        std::cout << name_ << " dræbte et monster med “"
-                  << w.name << "” (total kills: " << w.kills << ")\n";
     }
 }
 
@@ -172,7 +170,7 @@ void Hero::addGold(int amount) {
 
 void Hero::addWeapon(const Weapon& w) {
     weapons_.push_back(w);
-    std::cout << name_ << " erhvervede våbenet “" << w.name << "”.\n";
+    std::cout << name_ << " Tilføjet våbenet “" << w.name << "”.\n";
     if (equippedIndex_ == -1) {
         equippedIndex_ = static_cast<int>(weapons_.size()) - 1;
         std::cout << name_ << " udstyrer automatisk “" << w.name << "”.\n";
@@ -186,7 +184,7 @@ bool Hero::equipWeapon(int index) {
     }
     equippedIndex_ = index;
     Weapon &w = weapons_[index];
-    std::cout << name_ << " udstyrer “" << w.name
+    std::cout << name_ << " equipped “" << w.name
               << "” (holdbarhed: " << w.durability << ")\n";
     return true;
 }
@@ -204,10 +202,10 @@ void Hero::showWeapons() {
                   << w.strengthModifier << " mod., "
                   << w.durability << " holdbarhed, "
                   << w.kills << " kills)";
-        if (i == equippedIndex_) std::cout << " [udstyret]";
+        if (i == equippedIndex_) std::cout << " [equipped]";
         std::cout << "\n";
     }
-    std::cout << "Vælg våben at udstyre (1-" << weapons_.size()
+    std::cout << "Vælg våben at equippe (1-" << weapons_.size()
               << "), eller 0 for tilbage: ";
     int choice;
     while (!(std::cin >> choice) ||

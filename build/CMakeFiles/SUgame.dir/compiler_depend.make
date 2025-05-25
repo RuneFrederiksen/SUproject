@@ -955,6 +955,7 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/c++/13/bits/vector.tcc \
   /usr/include/c++/13/cctype \
   /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/climits \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdio \
@@ -992,7 +993,9 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/limits.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
@@ -1012,8 +1015,11 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -1064,6 +1070,7 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
@@ -1071,6 +1078,7 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -1088,8 +1096,10 @@ CMakeFiles/SUgame.dir/Hero.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 CMakeFiles/SUgame.dir/Shop.cpp.o: /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Shop.cpp \
   /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Hero.h \
@@ -1550,6 +1560,16 @@ CMakeFiles/SUgame.dir/main.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
 
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/main.cpp:
 
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/c++/13/climits:
+
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Hero.cpp:
 
 /usr/include/c++/13/pstl/glue_algorithm_defs.h:
@@ -1774,6 +1794,8 @@ CMakeFiles/SUgame.dir/main.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Database.h:
@@ -1811,6 +1833,8 @@ CMakeFiles/SUgame.dir/main.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
 /usr/include/c++/13/cwctype:
 
 /usr/include/c++/13/bits/sstream.tcc:
+
+/usr/include/linux/limits.h:
 
 /usr/include/c++/13/ratio:
 
@@ -2004,6 +2028,8 @@ CMakeFiles/SUgame.dir/main.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h:
+
 /usr/include/c++/13/tr1/modified_bessel_func.tcc:
 
 /home/rune/Documents/2.\ semester/softwareudvikling/SUproject/Grotte.cpp:
@@ -2080,6 +2106,8 @@ CMakeFiles/SUgame.dir/main.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
 
 /usr/include/c++/13/bits/specfun.h:
 
+/usr/include/limits.h:
+
 /usr/include/c++/13/initializer_list:
 
 /usr/include/c++/13/tr1/bessel_function.tcc:
@@ -2095,6 +2123,8 @@ CMakeFiles/SUgame.dir/main.cpp.o: /home/rune/Documents/2.\ semester/softwareudvi
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h:
 
 /usr/include/c++/13/numeric:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 
 /usr/include/c++/13/pstl/glue_numeric_defs.h:
 
