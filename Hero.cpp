@@ -1,8 +1,7 @@
-// Hero.cpp
-
 #include "Hero.h"
 #include <iostream>
 #include <limits>
+#include <climits>
 
 // —— Constructors —— 
 
@@ -16,7 +15,17 @@ Hero::Hero(const std::string& name)
     , statPoints_(0)
     , gold_(0)
     , equippedIndex_(-1)
-{}
+{
+    // Default weapon: Bare Hands
+    Weapon bareHands;
+    bareHands.name = "Bare Hands";
+    bareHands.damage = 0;
+    bareHands.strengthModifier = 0.0;
+    bareHands.durability = 1000;
+    bareHands.kills = 0;
+    weapons_.push_back(bareHands);
+    equippedIndex_ = 0;
+}
 
 Hero::Hero(const std::string& name,
            int xp,
@@ -34,7 +43,17 @@ Hero::Hero(const std::string& name,
     , statPoints_(statPoints)
     , gold_(0)
     , equippedIndex_(-1)
-{}
+{
+    // Default weapon: Bare Hands
+    Weapon bareHands;
+    bareHands.name = "Bare Hands";
+    bareHands.damage = 0;
+    bareHands.strengthModifier = 0.0;
+    bareHands.durability = 1000;
+    bareHands.kills = 0;
+    weapons_.push_back(bareHands);
+    equippedIndex_ = 0;
+}
 
 // —— Getters —— 
 
@@ -46,6 +65,7 @@ int Hero::getMaxHp() const                   { return maxhp_; }
 int Hero::getStrength() const                { return strength_; }
 int Hero::getStatPoints() const              { return statPoints_; }
 int Hero::getGold() const                    { return gold_; }
+int Hero::getEquippedIndex() const           { return equippedIndex_; }
 
 // —— Combat —— 
 
@@ -65,7 +85,8 @@ int Hero::attack() {
         if (w.durability <= 0) {
             std::cout << w.name << " er gået i stykker!\n";
             weapons_.erase(weapons_.begin() + equippedIndex_);
-            equippedIndex_ = -1;
+            // revert to bare hands
+            equippedIndex_ = 0;
         }
     } else {
         std::cout << name_ << " angriber uden våben ("
@@ -194,7 +215,7 @@ void Hero::showWeapons() {
            choice > static_cast<int>(weapons_.size())) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Ugyldigt valg (0-" << weapons_.size() << "): ";
+        std::cout << "Ugyldigt valg (0-" << weapons_.size() << " ): ";
     }
     if (choice > 0) {
         equipWeapon(choice - 1);

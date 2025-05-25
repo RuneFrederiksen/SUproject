@@ -1,4 +1,3 @@
-
 #include "Grotte.h"
 #include <iostream>
 #include <algorithm>
@@ -33,7 +32,7 @@ void Grotte::enter(Hero& hero) {
         }
 
         std::cout << "\n[Din HP: " << hero.getHp() << "/" << hero.getMaxHp()
-                  << ", Skade: " << hero.attack()
+                  << ", Skade: " << hero.getStrength()
                   << ", XP: " << hero.getXp()
                   << ", Guld: " << hero.getGold() << "]\n" << std::flush;
         delay(300);
@@ -48,7 +47,7 @@ void Grotte::enter(Hero& hero) {
                       << ", Fjender: " << c.enemies.size() << "\n" << std::flush;
             delay(100);
 
-            std::cout << "   Fjender:\n" << std::flush;
+            std::cout << "   Fjender:" << std::flush;
             delay(100);
             for (const auto& e : c.enemies) {
                 std::cout << "     - " << e.getName()
@@ -86,6 +85,8 @@ void Grotte::enter(Hero& hero) {
             runCave(cave, hero);
             if (hero.getHp() <= 0) return;
             cave.cleared = true;
+            // Små pauser mellem grotter
+            delay(300);
         }
 
         caves_.erase(
@@ -176,22 +177,30 @@ bool Grotte::fight(Hero& hero, Enemy enemy) {
         int dmg = hero.attack();
         std::cout << "Du angriber " << enemy.getName()
                   << " for " << dmg << " skade.\n" << std::flush;
+        delay(150);
         enemy.takeDamage(dmg);
-        delay(200);
-        if (!enemy.isAlive()) break;
-
+        delay(150);
+        if (!enemy.isAlive()) {
+            hero.recordKill();
+            delay(200);
+            break;
+        }
         int edmg = enemy.attack();
         std::cout << enemy.getName() << " angriber dig for "
                   << edmg << " skade.\n" << std::flush;
+        delay(150);
         hero.takeDamage(edmg);
-        delay(200);
+        delay(150);
     }
     if (hero.getHp() <= 0) {
         std::cout << "Du døde i kampen!\n" << std::flush;
+        delay(500);
         return false;
     } else {
         std::cout << "Du besejrede " << enemy.getName() << "!\n" << std::flush;
+        delay(300);
         hero.addXp(enemy.getXpReward());
+        delay(200);
         return true;
     }
 }
@@ -210,4 +219,5 @@ void Grotte::runCave(Cave& cave, Hero& hero) {
               << "Du modtog " << cave.goldReward << " guld.\n" << std::flush;
     delay(400);
     hero.addGold(cave.goldReward);
+    delay(200);
 }

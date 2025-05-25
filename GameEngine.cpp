@@ -89,7 +89,7 @@ void GameEngine::loadGame() {
 void GameEngine::showAdventureMenu() {
     std::cout << "\n[ " << hero_->getName()
               << " — HP: "   << hero_->getHp()   << "/" << hero_->getMaxHp()
-              << ", Skade: " << hero_->attack()
+              << ", Skade: " << hero_->getStrength()
               << ", XP: "    << hero_->getXp()
               << ", Guld: "  << hero_->getGold()
               << " ]\n";
@@ -111,10 +111,10 @@ void GameEngine::showAdventureMenu() {
             std::cout << hero_->getName()
                       << " er fuldt helbredt (-100 XP)\n";
             break;
-        case 3: grotte_.enter(*hero_);         break;
+        case 3: grotte_.enter(*hero_);  db_.saveHero(*hero_); db_.saveWeaponKills(*hero_);  break;
         case 4: shop_.open(*hero_);            break;
         case 5: hero_->showWeapons();          break;
-        case 6:
+        case 6: showMainMenu();
         default: return;                       // tilbage til hovedmenu
     }
 

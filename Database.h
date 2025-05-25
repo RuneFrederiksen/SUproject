@@ -1,37 +1,41 @@
+// Database.h
 #ifndef DATABASE_H
 #define DATABASE_H
 
 #include <string>
 #include <vector>
-#include "Hero.h"
 #include <sqlite3.h>
+#include "Hero.h"
 
 class Database {
 public:
-    explicit Database(const std::string& dbFile);
+    explicit Database(const std::string& dbFile = "game.db");
     ~Database();
 
-    // Starter analyse‐menuen
+    // Analysis menu
     void run();
 
-    // Schema + CRUD
-    void initSchema();
-    void saveHero(const Hero& hero);
+    // Hero CRUD
     bool loadHero(const std::string& name, Hero& outHero);
+    void saveHero(const Hero& hero);
     std::vector<std::string> listHeroes() const;
 
-    void saveWeaponKills(const Hero& hero);
+    // Weapon-kills CRUD
     std::vector<Weapon> loadWeaponKills(const std::string& heroName) const;
+    void saveWeaponKills(const Hero& hero);
 
 private:
     sqlite3* db_;
+    bool     isOpen_;
 
-    void executeNonQuery(const std::string& sql);
-    void executeSimpleQuery(const std::string& sql) const;
+    // Initialization
+    bool openDatabase(const std::string& path);
+    void closeDatabase();
+    void initSchema();
 
-    // Hjælpemetoder til run()
+    // Analysis helpers
     void showMenu() const;
-    int getChoice(int min, int max) const;
+    int  getChoice(int min, int max) const;
     void listHeroesAlphabetical() const;
     void showTotalKillsPerHero() const;
     void showKillsByHeroPerWeapon() const;

@@ -29,6 +29,7 @@ public:
     int getStrength() const;
     int getStatPoints() const;
     int getGold() const;
+    int getEquippedIndex() const;
 
     // combat & weapons
     int attack();
