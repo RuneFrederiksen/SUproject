@@ -1,45 +1,46 @@
-// Database.h
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef DB_MANAGER_H
+#define DB_MANAGER_H
 
 #include <string>
 #include <vector>
 #include <sqlite3.h>
 #include "Hero.h"
 
-class Database {
+class DBManager {
 public:
-    explicit Database(const std::string& dbFile = "game.db");
-    ~Database();
+    explicit DBManager(const std::string& filename = "game.db");
+    ~DBManager();
+
+    // Open/initialize
+    bool openConnection();
+    void closeConnection();
+
+    // Hero persistence
+    void saveHero(const Hero& hero);
+    bool loadHero(const std::string& name, Hero& outHero);
+    std::vector<std::string> getAllHeroNames() const;
+
+    // Weapon‐kill stats
+    void saveWeaponStats(const Hero& hero);
+    std::vector<Weapon> loadWeaponStats(const std::string& heroName) const;
 
     // Analysis menu
-    void run();
-
-    // Hero CRUD
-    bool loadHero(const std::string& name, Hero& outHero);
-    void saveHero(const Hero& hero);
-    std::vector<std::string> listHeroes() const;
-
-    // Weapon-kills CRUD
-    std::vector<Weapon> loadWeaponKills(const std::string& heroName) const;
-    void saveWeaponKills(const Hero& hero);
+    void runAnalysisMenu();
 
 private:
     sqlite3* db_;
-    bool     isOpen_;
+    std::string dbFile_;
 
-    // Initialization
-    bool openDatabase(const std::string& path);
-    void closeDatabase();
-    void initSchema();
+    // Schema setup
+    void ensureSchema();
 
     // Analysis helpers
-    void showMenu() const;
-    int  getChoice(int min, int max) const;
-    void listHeroesAlphabetical() const;
-    void showTotalKillsPerHero() const;
-    void showKillsByHeroPerWeapon() const;
-    void showTopHeroPerWeapon() const;
+    void showAnalysisOptions() const;
+    int  readChoice(int min, int max) const;
+    void listHeroesAlpha() const;
+    void reportTotalKills() const;
+    void reportKillsByWeapon() const;
+    void reportTopHeroPerWeapon() const;
 };
 
-#endif // DATABASE_H
+#endif

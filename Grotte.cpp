@@ -19,14 +19,14 @@ Grotte::Grotte()
 void Grotte::enter(Hero& hero) {
     generateCaves(hero);
     if (caves_.empty()) {
-        std::cout << "Ingen grotter er tilgængelige.\n" << std::flush;
+        std::cout << "Ingen grotter er tilgængelige." << std::endl;
         delay(500);
         return;
     }
 
     while (true) {
         if (caves_.empty()) {
-            std::cout << "Alle grotter er gennemført. Tilbage til hovedmenu.\n" << std::flush;
+            std::cout << "Alle grotter er gennemført. Tilbage til hovedmenu." << std::endl;
             delay(500);
             break;
         }
@@ -34,36 +34,42 @@ void Grotte::enter(Hero& hero) {
         std::cout << "\n[Din HP: " << hero.getHp() << "/" << hero.getMaxHp()
                   << ", Skade: " << hero.getStrength()
                   << ", XP: " << hero.getXp()
-                  << ", Guld: " << hero.getGold() << "]\n" << std::flush;
+                  << ", Guld: " << hero.getGold() << "]" << std::endl;
         delay(300);
 
-        std::cout << "=== Tilgængelige grotter ===\n" << std::flush;
+        std::cout << "=== Tilgængelige grotter ===" << std::endl;
         delay(200);
 
         for (size_t i = 0; i < caves_.size(); ++i) {
             const auto& c = caves_[i];
             std::cout << (i+1) << ". " << c.name
                       << " - Guld: " << c.goldReward
-                      << ", Fjender: " << c.enemies.size() << "\n" << std::flush;
+                      << ", Fjender: " << c.enemies.size() << std::endl;
             delay(100);
 
-            std::cout << "   Fjender:" << std::flush;
+            std::cout << "   Fjender:" << std::endl;
             delay(100);
             for (const auto& e : c.enemies) {
                 std::cout << "     - " << e.getName()
                           << " (HP: " << e.getHp()
                           << ", DMG: " << e.getDamage()
-                          << ", XP: " << e.getXpReward() << ")\n" << std::flush;
+                          << ", XP: " << e.getXpReward() << ")" << std::endl;
                 delay(50);
             }
         }
 
-        std::cout << "Vælg grotter at udfordre 1-3 eller 0 for at afslutte: " << std::flush;
+        std::cout << "Vælg grotter at udfordre 1-3 eller 0 for at afslutte:" << std::endl;
+        std::cout << "> ";
+        std::flush(std::cout);
         delay(100);
 
         std::string line;
-        std::getline(std::cin >> std::ws, line);
-        if (line == "0") break;
+    // Read a full line, skipping any leftover newline from previous input
+    std::getline(std::cin, line);
+    if (line.empty()) {
+        std::getline(std::cin, line);
+    }
+    if (line == "0") break;
 
         std::vector<int> choices;
         std::stringstream ss(line);
@@ -75,7 +81,7 @@ void Grotte::enter(Hero& hero) {
             if (ss.peek() == ',') ss.ignore();
         }
         if (choices.empty()) {
-            std::cout << "Ingen gyldige valg. Prøv igen.\n" << std::flush;
+            std::cout << "Ingen gyldige valg. Prøv igen." << std::endl;
             delay(300);
             continue;
         }
@@ -85,7 +91,6 @@ void Grotte::enter(Hero& hero) {
             runCave(cave, hero);
             if (hero.getHp() <= 0) return;
             cave.cleared = true;
-            // Små pauser mellem grotter
             delay(300);
         }
 
@@ -143,7 +148,8 @@ void Grotte::generateCaves(const Hero& hero) {
         }
 
         for (int j = 0; j < numEnemies; ++j) {
-            int bi = allowed[ std::uniform_int_distribution<int>(0, allowed.size()-1)(rng_) ];
+            int bi = allowed[ std::uniform_int_distribution<int>(0, 
+                       static_cast<int>(allowed.size())-1)(rng_) ];
             auto [hp, dmg, xp] = baseStats[bi];
 
             hp  += level * 2;
@@ -171,12 +177,12 @@ void Grotte::generateCaves(const Hero& hero) {
 }
 
 bool Grotte::fight(Hero& hero, Enemy enemy) {
-    std::cout << "\nEn kamp mod " << enemy.getName() << "!\n" << std::flush;
+    std::cout << "\nEn kamp mod " << enemy.getName() << "!" << std::endl;
     delay(300);
     while (hero.getHp() > 0 && enemy.isAlive()) {
         int dmg = hero.attack();
         std::cout << "Du angriber " << enemy.getName()
-                  << " for " << dmg << " skade.\n" << std::flush;
+                  << " for " << dmg << " skade." << std::endl;
         delay(150);
         enemy.takeDamage(dmg);
         delay(150);
@@ -187,17 +193,17 @@ bool Grotte::fight(Hero& hero, Enemy enemy) {
         }
         int edmg = enemy.attack();
         std::cout << enemy.getName() << " angriber dig for "
-                  << edmg << " skade.\n" << std::flush;
+                  << edmg << " skade." << std::endl;
         delay(150);
         hero.takeDamage(edmg);
         delay(150);
     }
     if (hero.getHp() <= 0) {
-        std::cout << "Du døde i kampen!\n" << std::flush;
+        std::cout << "Du døde i kampen!" << std::endl;
         delay(500);
         return false;
     } else {
-        std::cout << "Du besejrede " << enemy.getName() << "!\n" << std::flush;
+        std::cout << "Du besejrede " << enemy.getName() << "!" << std::endl;
         delay(300);
         hero.addXp(enemy.getXpReward());
         delay(200);
@@ -206,17 +212,17 @@ bool Grotte::fight(Hero& hero, Enemy enemy) {
 }
 
 void Grotte::runCave(Cave& cave, Hero& hero) {
-    std::cout << "\nGår ind i " << cave.name << "...\n" << std::flush;
+    std::cout << "\nGår ind i " << cave.name << "..." << std::endl;
     delay(500);
     for (auto& e : cave.enemies) {
         if (!fight(hero, e)) {
-            std::cout << "Du kunne ikke fuldføre " << cave.name << ".\n" << std::flush;
+            std::cout << "Du kunne ikke fuldføre " << cave.name << "." << std::endl;
             delay(300);
             return;
         }
     }
     std::cout << "\nDu besejrede alle fjender i " << cave.name << "!\n"
-              << "Du modtog " << cave.goldReward << " guld.\n" << std::flush;
+              << "Du modtog " << cave.goldReward << " guld." << std::endl;
     delay(400);
     hero.addGold(cave.goldReward);
     delay(200);
