@@ -1,6 +1,5 @@
-// Shop.cpp
 #include "Shop.h"
-#include "Hero.h"      // sørg for at få Weapon-def og addWeapon(const Weapon&)
+#include "Hero.h"      
 #include <iostream>
 #include <limits>
 #include <thread>
@@ -9,10 +8,11 @@
 Shop::Shop()
 {
     // name, price, damage, strengthModifier, durability
-    items_.push_back({ "Jernsværd",    50,  5,  0.2,  10 });
-    items_.push_back({ "Ståløkse",     75,  7,  0.1,  12 });
-    items_.push_back({ "Langbue",     100,  4,  0.5,   8 });
-    items_.push_back({ "Magisk stav", 150,  3,  1.0,  15 });
+    items_.push_back({ "sværd",    50,  5,  0.2,  65 });
+    items_.push_back({ "økse",     75,  7,  0.1,  70 });
+    items_.push_back({ "bue",     100,  4,  0.5,   60 });
+    items_.push_back({ "stav", 150,  3,  1.0,  50 });
+    items_.push_back({ "bazooka", 1000,  100,  0,  1 });
 }
 
 void Shop::displayItems() const

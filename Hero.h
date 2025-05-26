@@ -1,4 +1,3 @@
-// Hero.h  (note: vi tilføjer getter for weapons_)
 #ifndef HERO_H
 #define HERO_H
 

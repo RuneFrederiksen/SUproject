@@ -1,4 +1,3 @@
-
 #ifndef GROTTE_H
 #define GROTTE_H
 

@@ -1,4 +1,3 @@
-// Shop.h
 #ifndef SHOP_H
 #define SHOP_H
 
@@ -24,4 +23,4 @@ private:
     std::vector<ShopItem> items_;
 };
 
-#endif // SHOP_H
+#endif

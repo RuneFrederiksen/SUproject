@@ -1,4 +1,3 @@
-// GameEngine.h
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
 
@@ -30,4 +29,4 @@ private:
     Database            db_;
 };
 
-#endif // GAMEENGINE_H
+#endif

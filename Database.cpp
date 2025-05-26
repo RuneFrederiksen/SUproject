@@ -3,7 +3,10 @@
 #include <sstream>
 #include <limits>
 
-DBManager::DBManager(const std::string& filename)
+// ------------------------
+// Constructor / Destructor
+// ------------------------
+Database::Database(const std::string& filename)
     : db_(nullptr), dbFile_(filename)
 {
     if (openConnection()) {
@@ -11,11 +14,14 @@ DBManager::DBManager(const std::string& filename)
     }
 }
 
-DBManager::~DBManager() {
+Database::~Database() {
     closeConnection();
 }
 
-bool DBManager::openConnection() {
+// ----------------–
+// Connection setup
+// ----------------–
+bool Database::openConnection() {
     if (sqlite3_open(dbFile_.c_str(), &db_) != SQLITE_OK) {
         std::cerr << "[DB] Cannot open " << dbFile_
                   << ": " << sqlite3_errmsg(db_) << "\n";
@@ -25,14 +31,17 @@ bool DBManager::openConnection() {
     return true;
 }
 
-void DBManager::closeConnection() {
+void Database::closeConnection() {
     if (db_) {
         sqlite3_close(db_);
         db_ = nullptr;
     }
 }
 
-void DBManager::ensureSchema() {
+// ----------------
+// Schema Creation
+// ----------------
+void Database::ensureSchema() {
     const char* ddl = R"SQL(
       CREATE TABLE IF NOT EXISTS heroes (
         name TEXT PRIMARY KEY,
@@ -60,15 +69,15 @@ void DBManager::ensureSchema() {
     }
 }
 
-// ——— Hero persistence ———
-
-void DBManager::saveHero(const Hero& h) {
+// -------------------
+// Hero Persistence
+// -------------------
+void Database::saveHero(const Hero& h) {
     const char* sql = R"SQL(
       INSERT OR REPLACE INTO heroes
         (name,xp,level,hp,maxhp,strength,statPoints,gold)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?);
     )SQL";
-
     sqlite3_stmt* stmt = nullptr;
     sqlite3_prepare_v2(db_, sql, -1, &stmt, nullptr);
     sqlite3_bind_text (stmt, 1, h.getName().c_str(), -1, SQLITE_TRANSIENT);
@@ -79,18 +88,16 @@ void DBManager::saveHero(const Hero& h) {
     sqlite3_bind_int  (stmt, 6, h.getStrength());
     sqlite3_bind_int  (stmt, 7, h.getStatPoints());
     sqlite3_bind_int  (stmt, 8, h.getGold());
-
     if (sqlite3_step(stmt) != SQLITE_DONE)
         std::cerr << "[DB] saveHero failed: " << sqlite3_errmsg(db_) << "\n";
     sqlite3_finalize(stmt);
 }
 
-bool DBManager::loadHero(const std::string& name, Hero& outHero) {
+bool Database::loadHero(const std::string& name, Hero& outHero) {
     const char* sql = R"SQL(
       SELECT xp,level,hp,maxhp,strength,statPoints,gold
         FROM heroes WHERE name = ?;
     )SQL";
-
     sqlite3_stmt* stmt = nullptr;
     sqlite3_prepare_v2(db_, sql, -1, &stmt, nullptr);
     sqlite3_bind_text(stmt, 1, name.c_str(), -1, SQLITE_TRANSIENT);
@@ -114,7 +121,7 @@ bool DBManager::loadHero(const std::string& name, Hero& outHero) {
     return found;
 }
 
-std::vector<std::string> DBManager::getAllHeroNames() const {
+std::vector<std::string> Database::getAllHeroNames() const {
     const char* sql = "SELECT name FROM heroes;";
     sqlite3_stmt* stmt = nullptr;
     std::vector<std::string> list;
@@ -128,9 +135,10 @@ std::vector<std::string> DBManager::getAllHeroNames() const {
     return list;
 }
 
-// ——— Weapon‐kill stats ———
-
-void DBManager::saveWeaponStats(const Hero& h) {
+// -----------------------
+// Weapon Kills Persistence
+// -----------------------
+void Database::saveWeaponStats(const Hero& h) {
     // remove old
     {
       const char* del = "DELETE FROM weapon_kills WHERE hero = ?;";
@@ -157,12 +165,12 @@ void DBManager::saveWeaponStats(const Hero& h) {
         sqlite3_bind_int    (stmt, 5, w.durability);
         sqlite3_bind_int    (stmt, 6, w.kills);
         if (sqlite3_step(stmt) != SQLITE_DONE)
-            std::cerr << "[DB] saveWeaponStats failed: " << sqlite3_errmsg(db_)<<"\n";
+            std::cerr << "[DB] saveWeaponStats failed: " << sqlite3_errmsg(db_) << "\n";
     }
     sqlite3_finalize(stmt);
 }
 
-std::vector<Weapon> DBManager::loadWeaponStats(const std::string& heroName) const {
+std::vector<Weapon> Database::loadWeaponStats(const std::string& heroName) const {
     const char* sql = R"SQL(
       SELECT weapon,damage,strengthModifier,durability,kills
         FROM weapon_kills WHERE hero = ?;
@@ -184,18 +192,19 @@ std::vector<Weapon> DBManager::loadWeaponStats(const std::string& heroName) cons
     return result;
 }
 
-// ——— Analysis menu ———
-
-void DBManager::runAnalysisMenu() {
+// ----------------------
+// Interactive Analysis
+// ----------------------
+void Database::runAnalysisMenu() {
     if (!db_) return;
     while (true) {
         showAnalysisOptions();
         int choice = readChoice(1,5);
         switch (choice) {
-          case 1: listHeroesAlpha();    break;
-          case 2: reportTotalKills();    break;
-          case 3: reportKillsByWeapon(); break;
-          case 4: reportTopHeroPerWeapon(); break;
+          case 1: listHeroesAlpha();       break;
+          case 2: reportTotalKills();      break;
+          case 3: reportKillsByWeapon();   break;
+          case 4: reportTopHeroPerWeapon();break;
           case 5: return;
         }
         std::cout << "\n(tryk Enter for at fortsætte) ";
@@ -203,17 +212,17 @@ void DBManager::runAnalysisMenu() {
     }
 }
 
-void DBManager::showAnalysisOptions() const {
+void Database::showAnalysisOptions() const {
     std::cout<<"\n-- Analyse --\n"
-             <<"1) Helte alfabetisk\n"
-             <<"2) Total kills per helt\n"
+             <<"1) Hero alfabetisk\n"
+             <<"2) Total kills per Hero\n"
              <<"3) Kills per våben\n"
-             <<"4) Top per våben\n"
+             <<"4) Top Hero per våben\n"
              <<"5) Tilbage\n"
              <<"Valg: ";
 }
 
-int DBManager::readChoice(int min, int max) const {
+int Database::readChoice(int min, int max) const {
     int c;
     while (!(std::cin>>c) || c<min||c>max) {
         std::cin.clear();
@@ -224,7 +233,7 @@ int DBManager::readChoice(int min, int max) const {
     return c;
 }
 
-void DBManager::listHeroesAlpha() const {
+void Database::listHeroesAlpha() const {
     sqlite3_stmt* stmt;
     sqlite3_prepare_v2(db_,"SELECT name FROM heroes ORDER BY name;",-1,&stmt,nullptr);
     std::cout<<"\nHelte:\n";
@@ -233,7 +242,7 @@ void DBManager::listHeroesAlpha() const {
     sqlite3_finalize(stmt);
 }
 
-void DBManager::reportTotalKills() const {
+void Database::reportTotalKills() const {
     sqlite3_stmt* stmt;
     sqlite3_prepare_v2(db_,
       "SELECT hero, SUM(kills) FROM weapon_kills GROUP BY hero;",-1,&stmt,nullptr);
@@ -244,8 +253,8 @@ void DBManager::reportTotalKills() const {
     sqlite3_finalize(stmt);
 }
 
-void DBManager::reportKillsByWeapon() const {
-    std::cout<<"\nHeltnavn: ";
+void Database::reportKillsByWeapon() const {
+    std::cout<<"\nHero navn: ";
     std::string h; std::getline(std::cin,h);
     sqlite3_stmt* stmt;
     sqlite3_prepare_v2(db_,
@@ -258,7 +267,7 @@ void DBManager::reportKillsByWeapon() const {
     sqlite3_finalize(stmt);
 }
 
-void DBManager::reportTopHeroPerWeapon() const {
+void Database::reportTopHeroPerWeapon() const {
     sqlite3_stmt* stmt;
     sqlite3_prepare_v2(db_,
       R"SQL(
@@ -269,7 +278,7 @@ void DBManager::reportTopHeroPerWeapon() const {
             WHERE x.weapon = w.weapon
          );
       )SQL", -1, &stmt,nullptr);
-    std::cout<<"\nTop per våben:\n";
+    std::cout<<"\nTop Hero per våben:\n";
     while (sqlite3_step(stmt)==SQLITE_ROW)
         std::cout<<" - "<<sqlite3_column_text(stmt,0)
                  <<": "<<sqlite3_column_text(stmt,1)

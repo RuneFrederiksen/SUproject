@@ -1,40 +1,35 @@
-#ifndef DB_MANAGER_H
-#define DB_MANAGER_H
+#ifndef DATABASE_H
+#define DATABASE_H
 
 #include <string>
 #include <vector>
 #include <sqlite3.h>
 #include "Hero.h"
 
-class DBManager {
+// Database wraps all SQLite logic: schema setup, CRUD for heroes & weapon kills, and analysis menu.
+class Database {
 public:
-    explicit DBManager(const std::string& filename = "game.db");
-    ~DBManager();
+    explicit Database(const std::string& filename = "game.db");
+    ~Database();
 
-    // Open/initialize
     bool openConnection();
     void closeConnection();
 
-    // Hero persistence
     void saveHero(const Hero& hero);
     bool loadHero(const std::string& name, Hero& outHero);
     std::vector<std::string> getAllHeroNames() const;
 
-    // Weapon‐kill stats
     void saveWeaponStats(const Hero& hero);
     std::vector<Weapon> loadWeaponStats(const std::string& heroName) const;
 
-    // Analysis menu
     void runAnalysisMenu();
 
 private:
-    sqlite3* db_;
-    std::string dbFile_;
+    sqlite3*    db_;      // SQLite connection handle
+    std::string dbFile_;  // Path to .db file
 
-    // Schema setup
     void ensureSchema();
 
-    // Analysis helpers
     void showAnalysisOptions() const;
     int  readChoice(int min, int max) const;
     void listHeroesAlpha() const;
